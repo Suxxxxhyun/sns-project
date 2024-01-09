@@ -8,4 +8,4 @@
 
 ### 학습 로그 
 
-- [Record, Assert, var, Request Body]()
+- [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
