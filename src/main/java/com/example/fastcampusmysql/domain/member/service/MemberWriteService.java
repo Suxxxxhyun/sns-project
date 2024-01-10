@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberWriteService {
     final private MemberRepository memberRepository;
-    public Member create(MemberRegisterCommand command){
+    public Member register(MemberRegisterCommand command){
         /*
             목표 - 회원정보(이메일, 닉네임, 회원정보)를 등록한다.
                 - 닉네임은 10자이상 넘길 수 없다.
