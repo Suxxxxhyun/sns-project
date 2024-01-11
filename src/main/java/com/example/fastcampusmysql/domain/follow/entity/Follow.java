@@ -9,8 +9,8 @@ import java.util.Objects;
 @Getter
 public class Follow {
     final private Long id;
-    final private Long fromMemberId;
-    final private Long toMemberId;
+    final private Long fromMemberId; //팔로우를 요청한 사람
+    final private Long toMemberId; //팔로우를 요청당한 사람
     final private LocalDateTime createdAt;
 
     @Builder

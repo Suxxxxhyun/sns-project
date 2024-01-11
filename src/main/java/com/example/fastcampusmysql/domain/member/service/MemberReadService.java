@@ -47,6 +47,5 @@ public class MemberReadService {
                 history.getNickname(),
                 history.getCreatedAt()
         );
-
     }
 }
