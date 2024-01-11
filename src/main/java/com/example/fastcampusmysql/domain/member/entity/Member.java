@@ -1,13 +1,11 @@
 package com.example.fastcampusmysql.domain.member.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Objects;
 
 @Getter
