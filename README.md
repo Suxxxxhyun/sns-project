@@ -25,3 +25,5 @@
 
 ### 학습 로그
 - [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
+- [Object Mother Pattern, EasyRandom 라이브러리]()
+- [인덱스로 B+Tree가 자주 사용되는 이유]()
