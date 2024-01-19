@@ -26,6 +26,7 @@
 ### 학습 로그
 - [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
 - [Object Mother Pattern, EasyRandom 라이브러리]()
+- [인덱스를 사용하는 이유(MySQL기준)]()
 - [DB성능의 핵심은 무엇인가?]()
 - [인덱스로 B+Tree가 자주 사용되는 이유]()
 - [클러스터 인덱스가 뭐야?]()
