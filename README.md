@@ -27,7 +27,9 @@
   - 이를 위해, application의 usacase계층을 별도로 두어, usacase는 서로 다른 domain간 데이터를 주고받는 계층이 되도록 하였다. 이렇게 하면 결합도를 낮추는데 좋을 것이라고 판단되었다.
   - 이후, usacase계층에서 작성한 것들은 모두, 서로 다른 domain간 데이터를 주고 받는 상황일 경우를 제어하기 위한 것으로 구현하였다. 
 
-### 학습 로그
+### NamedParameterJdbcTemplate 사용법
+
+### 필수 개념
 - [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
 - [Object Mother Pattern, EasyRandom 라이브러리](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(2).md)
 - [인덱스를 사용하는 이유(MySQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(3).md)

@@ -47,6 +47,7 @@ public class PostRepository {
     private Post insert(Post post) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(namedParameterJdbcTemplate.getJdbcTemplate())
                 .withTableName(TABLE)
+                .withCatalogName("fast_sns")
                 .usingGeneratedKeyColumns("id");
 
         SqlParameterSource params = new BeanPropertySqlParameterSource(post);
@@ -79,5 +80,18 @@ public class PostRepository {
             throw new RuntimeException("not updated");
         }
         return post;
+    }
+
+    public void bulkInsert(List<Post> posts) {
+        var sql = String.format("""
+                INSERT INTO `%s` (memberId, contents, createdDate, createdAt)
+                VALUES (:memberId, :contents, :createdDate, :createdAt)
+                """, TABLE);
+
+        SqlParameterSource[] params = posts
+                .stream()
+                .map(BeanPropertySqlParameterSource::new)
+                .toArray(SqlParameterSource[]::new);
+        namedParameterJdbcTemplate.batchUpdate(sql, params);
     }
 }
