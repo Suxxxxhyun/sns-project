@@ -33,7 +33,11 @@
 - [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
 - [Object Mother Pattern, EasyRandom 라이브러리](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(2).md)
 - [인덱스를 사용하는 이유(MySQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(3).md)
+  - 조건을 만족하는 튜플들을 빠르게 조회하기 위해 인덱스를 사용한다.
 - [BTree](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(4).md)
+  - B tree는 BST를 일반화한 tree로 자녀노드를 2개 이상 가질 수 있다.
 - [인덱스로 BTree계열이 자주 사용되는 이유](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(5).md)
+  - B tree index는 self-balancing BST에 비해 secondary storage접근을 적게 한다.
+  - B tree 노드는 block단위의 저장공간을 알차게 활용할 수 있다.
 - [클러스터 인덱스가 뭐야?]()
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
