@@ -34,6 +34,6 @@
 - [Object Mother Pattern, EasyRandom 라이브러리](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(2).md)
 - [인덱스를 사용하는 이유(MySQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(3).md)
 - [BTree](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(4).md)
-- [인덱스로 BTree계열이 자주 사용되는 이유]()
+- [인덱스로 BTree계열이 자주 사용되는 이유](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(5).md)
 - [클러스터 인덱스가 뭐야?]()
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
