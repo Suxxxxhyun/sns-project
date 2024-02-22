@@ -34,4 +34,33 @@ public class PostReadService {
     public Page<Post> getPosts(Long memberId, Pageable pageRequest) {
         return postRepository.findAllByMemberId(memberId, pageRequest);
     }
+
+    //Page가 아닌 PageCursor를 사용한 이유는, 애초에 Page객체를 구현하려면 전체 개수를 파라미터로 받아야하기때문에,
+    //커서기반페이징을 위한 별도의 인터페이스인 PageCursor를 만들어주자!
+    public PageCursor<Post> getPosts(Long memberId, CursorRequest cursorRequest) {
+        var posts = findAllBy(memberId, cursorRequest);
+        long nextKey = getNextKey(posts);
+        return new PageCursor<>(cursorRequest.next(nextKey), posts);
+    }
+
+    //Post게시물 테이블에 가장 작은 id값을 반환, 아예 데이터가 없다면 -1반환
+    private long getNextKey(List<Post> posts) {
+        return posts.stream()
+                .mapToLong(Post::getId)
+                .min()
+                .orElse(CursorRequest.NONE_KEY);
+    }
+
+    private List<Post> findAllBy(Long memberId, CursorRequest cursorRequest) {
+        if (cursorRequest.hasKey()) {
+            return postRepository.findAllByLessThanIdAndMemberIdAndOrderByIdDesc(
+                    cursorRequest.key(),
+                    memberId,
+                    cursorRequest.size()
+            );
+        }
+
+        return postRepository.findAllByMemberIdAndOrderByIdDesc(memberId, cursorRequest.size());
+    }
+
 }

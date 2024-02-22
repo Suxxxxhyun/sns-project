@@ -111,11 +111,6 @@ public class PostRepository {
     }
 
     public Page<Post> findAllByMemberId(Long memberId, Pageable pageable) {
-        var params = new MapSqlParameterSource()
-                .addValue("memberId", memberId)
-                .addValue("size", pageable.getPageSize())
-                .addValue("offset", pageable.getOffset());
-
         var sql = String.format("""
                 SELECT *
                 FROM %s
@@ -124,6 +119,12 @@ public class PostRepository {
                 LIMIT :size
                 OFFSET :offset
                 """, TABLE, PageHelper.orderBy(pageable.getSort()));
+
+        var params = new MapSqlParameterSource()
+                .addValue("memberId", memberId)
+                .addValue("size", pageable.getPageSize())
+                .addValue("offset", pageable.getOffset());
+
         var posts = namedParameterJdbcTemplate.query(sql, params, ROW_MAPPER);
         return new PageImpl(posts, pageable, getCount(memberId));
     }
@@ -136,5 +137,42 @@ public class PostRepository {
                 """, TABLE);
         var countParam = new MapSqlParameterSource().addValue("memberId", memberId);
         return namedParameterJdbcTemplate.queryForObject(countQuery,  countParam, Long.class);
+    }
+
+    //커서기반 페이지네이션, 클라이언트가 키를 쥐고 있지 않은 경우
+    public List<Post> findAllByMemberIdAndOrderByIdDesc(Long memberId, int size) {
+        var sql = String.format("""
+                SELECT *
+                FROM %s
+                WHERE memberId = :memberId
+                ORDER BY id DESC
+                LIMIT :size
+                """, TABLE);
+
+        var params = new MapSqlParameterSource()
+                .addValue("memberId", memberId)
+                .addValue("size", size);
+
+        return namedParameterJdbcTemplate.query(sql, params, ROW_MAPPER);
+    }
+
+    //커서기반 페이지네이션, 클라이언트가 키를 쥐고 있는 경우
+    public List<Post> findAllByLessThanIdAndMemberIdAndOrderByIdDesc(Long id, Long memberId, int size) {
+
+        var params = new MapSqlParameterSource()
+                .addValue("id", id)
+                .addValue("memberId", memberId)
+                .addValue("size", size);
+
+        String query = String.format("""
+                SELECT *
+                FROM %s
+                WHERE memberId = :memberId and id < :id
+                ORDER BY id DESC
+                LIMIT :size
+                """, TABLE);
+
+        return namedParameterJdbcTemplate.query(query, params, ROW_MAPPER);
+
     }
 }

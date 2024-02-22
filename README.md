@@ -14,7 +14,8 @@
 ---
 - 내가 쓴 글 캘린더
   - [✅] 작성일자와 회원별로, 회원이 작성한 게시물 갯수를 반환
-  - [✅] 회원이 작성한 게시물 페이징처리하여 반환
+  - [✅] 회원이 작성한 게시물 offset기반의 페이징처리하여 반환
+  - [✅] 회원이 작성한 게시물 Cusor기반의 페이징처리하여 반환
 
 ## 위 기능을 구현 시 고민해본 것들
 - Service단을 Write와 Read를 각각 분리해서 작성하는 게 더 좋지 않을까?
@@ -41,4 +42,5 @@
   - B tree index는 self-balancing BST에 비해 secondary storage접근을 적게 한다.
   - B tree 노드는 block단위의 저장공간을 알차게 활용할 수 있다.
 - [clustered Index vs non-clustered Index (MYSQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(6).md)
+- [오프셋 기반 페이지네이션 vs 커서기반 페이지네이션]()
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
