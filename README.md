@@ -42,5 +42,7 @@
   - B tree index는 self-balancing BST에 비해 secondary storage접근을 적게 한다.
   - B tree 노드는 block단위의 저장공간을 알차게 활용할 수 있다.
 - [clustered Index vs non-clustered Index (MYSQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(6).md)
+  - Data Page들의 데이터가 정렬되어있냐 vs 정렬되어있지 않냐
 - [오프셋 기반 페이지네이션 vs 커서기반 페이지네이션](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(7).md)
+  - 이전의 데이터를 읽냐 vs 이전의 데이터를 읽지 않냐
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
