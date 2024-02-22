@@ -40,5 +40,5 @@
 - [인덱스로 BTree계열이 자주 사용되는 이유](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(5).md)
   - B tree index는 self-balancing BST에 비해 secondary storage접근을 적게 한다.
   - B tree 노드는 block단위의 저장공간을 알차게 활용할 수 있다.
-- [clustered Index vs non-clustered Index (MYSQL기준)]()
+- [clustered Index vs non-clustered Index (MYSQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(6).md)
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
