@@ -43,12 +43,10 @@ public class PostReadService {
         return new PageCursor<>(cursorRequest.next(nextKey), posts);
     }
 
-    //Post게시물 테이블에 가장 작은 id값을 반환, 아예 데이터가 없다면 -1반환
-    private long getNextKey(List<Post> posts) {
-        return posts.stream()
-                .mapToLong(Post::getId)
-                .min()
-                .orElse(CursorRequest.NONE_KEY);
+    public PageCursor<Post> getPosts(List<Long> memberIds, CursorRequest cursorRequest) {
+        var posts = findAllBy(memberIds, cursorRequest);
+        long nextKey = getNextKey(posts);
+        return new PageCursor<>(cursorRequest.next(nextKey), posts);
     }
 
     private List<Post> findAllBy(Long memberId, CursorRequest cursorRequest) {
@@ -61,6 +59,26 @@ public class PostReadService {
         }
 
         return postRepository.findAllByMemberIdAndOrderByIdDesc(memberId, cursorRequest.size());
+    }
+
+    private List<Post> findAllBy(List<Long> memberIds, CursorRequest cursorRequest) {
+        if (cursorRequest.hasKey()) {
+            return postRepository.findAllByLessThanIdAndMemberIdInAndOrderByIdDesc(
+                    cursorRequest.key(),
+                    memberIds,
+                    cursorRequest.size()
+            );
+        }
+
+        return postRepository.findAllByMemberIdInAndOrderByIdDesc(memberIds, cursorRequest.size());
+    }
+
+    //Post게시물 테이블에 가장 작은 id값을 반환, 아예 데이터가 없다면 -1반환
+    private long getNextKey(List<Post> posts) {
+        return posts.stream()
+                .mapToLong(Post::getId)
+                .min()
+                .orElse(CursorRequest.NONE_KEY);
     }
 
 }

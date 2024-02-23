@@ -3,19 +3,21 @@
 
 ## 주요 기능
 - 회원정보 관리
-  - [✅] 이메일, 닉네임, 생년월일을 입력받아 저장
+  - 이메일, 닉네임, 생년월일을 입력받아 저장
     - 닉네임은 10자를 초과불가
-  - [✅] 회원정보를 조회
-  - [✅] 회원은 닉네임을 변경
+  - 회원정보를 조회
+  - 회원은 닉네임을 변경
     - 닉네임은 10자를 초과불가
-  - [✅] 회원의 닉네임 변경이력을 저장 및 조회
-  - [✅] 팔로우 등록 및 조회
-
+  - 회원의 닉네임 변경이력을 저장 및 조회
+  - 팔로우 등록 및 조회
 ---
-- 내가 쓴 글 캘린더
-  - [✅] 작성일자와 회원별로, 회원이 작성한 게시물 갯수를 반환
-  - [✅] 회원이 작성한 게시물 offset기반의 페이징처리하여 반환
-  - [✅] 회원이 작성한 게시물 Cusor기반의 페이징처리하여 반환
+- 내가 쓴 글 조회
+  - 작성일자와 회원별로, 회원이 작성한 게시물 갯수를 반환
+  - 회원이 작성한 게시물 offset기반의 페이징처리하여 반환
+  - 회원이 작성한 게시물 Cusor기반의 페이징처리하여 반환
+---
+- 타임라인
+  - 회원id를 받아, 해당 회원의 팔로워들의 게시물을 Cursor기반, 시간순으로 조회 (pull-mode방식)
 
 ## 위 기능을 구현 시 고민해본 것들
 - Service단을 Write와 Read를 각각 분리해서 작성하는 게 더 좋지 않을까?
@@ -31,7 +33,7 @@
 
 ### NamedParameterJdbcTemplate 사용법
 
-### 필수 개념
+### 기능을 구현하며 학습한 내용 정리
 - [Record, Assert, var, Request Body](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log.md)
 - [Object Mother Pattern, EasyRandom 라이브러리](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(2).md)
 - [인덱스를 사용하는 이유(MySQL기준)](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(3).md)
@@ -46,5 +48,5 @@
 - [오프셋 기반 페이지네이션 vs 커서기반 페이지네이션](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(7).md)
   - 이전의 데이터를 읽냐 vs 이전의 데이터를 읽지 않냐
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
-- [pull mode(fanout-on-write), push model(fanout-on-read)?](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(8).md)
+- [pull mode(fanout-on-read), push model(fanout-on-write)?](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(8).md)
   - 쓰기 시점에 fanout을 하는가, 읽기 시점에 fanout을 하는가
