@@ -46,5 +46,5 @@
 - [오프셋 기반 페이지네이션 vs 커서기반 페이지네이션](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(7).md)
   - 이전의 데이터를 읽냐 vs 이전의 데이터를 읽지 않냐
 - [pk를 auto increment로 할경우, UUID로 할경우 각각의 장단점]()
-- [pull mode(fanout-on-write), push model(fanout-on-read)?]()
+- [pull mode(fanout-on-write), push model(fanout-on-read)?](https://github.com/Suxxxxhyun/sns-project/blob/main/learning-log/learning-log(8).md)
   - 쓰기 시점에 fanout을 하는가, 읽기 시점에 fanout을 하는가
