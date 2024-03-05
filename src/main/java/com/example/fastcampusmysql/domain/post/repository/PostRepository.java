@@ -217,4 +217,22 @@ public class PostRepository {
         return namedParameterJdbcTemplate.query(query, params, ROW_MAPPER);
 
     }
+
+    public List<Post> findAllByIdIn(List<Long> postIds) {
+        if (postIds.isEmpty()) {
+            return List.of();
+        }
+
+        var params = new MapSqlParameterSource()
+                .addValue("postIds", postIds);
+
+        String query = String.format("""
+                SELECT *
+                FROM %s
+                WHERE id in (:postIds)
+                """, TABLE);
+
+        return namedParameterJdbcTemplate.query(query, params, ROW_MAPPER);
+
+    }
 }

@@ -73,6 +73,10 @@ public class PostReadService {
         return postRepository.findAllByMemberIdInAndOrderByIdDesc(memberIds, cursorRequest.size());
     }
 
+    public List<Post> getPosts(List<Long> postIds) {
+        return postRepository.findAllByIdIn(postIds);
+    }
+
     //Post게시물 테이블에 가장 작은 id값을 반환, 아예 데이터가 없다면 -1반환
     private long getNextKey(List<Post> posts) {
         return posts.stream()
