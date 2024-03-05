@@ -7,6 +7,7 @@ import com.example.fastcampusmysql.domain.member.repository.MemberNicknameHistor
 import com.example.fastcampusmysql.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -33,6 +34,7 @@ public class MemberWriteService {
         return savedMember;
     }
 
+    @Transactional // Atomicity를 보장하기 위해 트랜잭션 어노테이션 설정
     public void changeNickname(Long memberId, String nickname){
         /*
             1. 회원의 이름을 변경
