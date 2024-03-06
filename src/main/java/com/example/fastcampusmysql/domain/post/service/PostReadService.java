@@ -2,7 +2,9 @@ package com.example.fastcampusmysql.domain.post.service;
 
 import com.example.fastcampusmysql.domain.post.dto.DailyPostCount;
 import com.example.fastcampusmysql.domain.post.dto.DailyPostCountRequest;
+import com.example.fastcampusmysql.domain.post.dto.PostDto;
 import com.example.fastcampusmysql.domain.post.entity.Post;
+import com.example.fastcampusmysql.domain.post.repository.PostLikeRepository;
 import com.example.fastcampusmysql.domain.post.repository.PostRepository;
 import com.example.fastcampusmysql.util.CursorRequest;
 import com.example.fastcampusmysql.util.PageCursor;
@@ -19,6 +21,7 @@ import java.util.List;
 @Service
 public class PostReadService {
     final private PostRepository postRepository;
+    final private PostLikeRepository postLikeRepository;
 
     public List<DailyPostCount> getDailyPostCount(DailyPostCountRequest request){
         /*
@@ -31,8 +34,16 @@ public class PostReadService {
         return postRepository.groupByCreatedDate(request);
     }
 
-    public Page<Post> getPosts(Long memberId, Pageable pageRequest) {
-        return postRepository.findAllByMemberId(memberId, pageRequest);
+    public Page<PostDto> getPosts(Long memberId, Pageable pageRequest) {
+        return postRepository.findAllByMemberId(memberId, pageRequest).map(this::toDto);
+    }
+
+    private PostDto toDto(Post post){
+        return new PostDto(post.getId(), post.getContents(), post.getCreatedAt(), postLikeRepository.countByPostId(post.getId()));
+    }
+
+    public Post getPost(Long postId){
+        return postRepository.findById(postId, false).orElseThrow();
     }
 
     //Page가 아닌 PageCursor를 사용한 이유는, 애초에 Page객체를 구현하려면 전체 개수를 파라미터로 받아야하기때문에,
