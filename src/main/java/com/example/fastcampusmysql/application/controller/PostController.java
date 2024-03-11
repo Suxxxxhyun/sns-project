@@ -67,12 +67,14 @@ public class PostController {
         return getTimelinePostsUsecase.executeByTimeline(memberId, cursorRequest);
     }
 
+    // 낙관적 락을 이용하여 좋아요 수 증가
     @PostMapping("/{postId}/like/v1")
     public void likePost(@PathVariable Long postId){
-//        postWriteService.likePost(postId);
+//        postWriteService.likePost(postId);  // 비관적 락을 이용해서 좋아요 수 증가
         postWriteService.likePostByOptimisticLock(postId);
     }
 
+    // 좋아요 집계 테이블을 분리하여 좋아요 수 증가
     @PostMapping("/{postId}/like/v2")
     public void likePost(@PathVariable Long postId, @RequestParam Long memberId){
         createPostLikeUsecase.execute(postId, memberId);

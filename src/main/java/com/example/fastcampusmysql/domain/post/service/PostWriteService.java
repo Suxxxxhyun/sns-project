@@ -25,12 +25,16 @@ public class PostWriteService {
         return postRepository.save(post).getId();
     }
 
+    // 비관적 락을 이용해서 좋아요 수 증가
+
     @Transactional
     public void likePost(Long postId){
         var post = postRepository.findById(postId, true).orElseThrow();
         post.incrementLikeCount();
         postRepository.save(post);
     }
+
+    // 낙관적 락을 이용해서 좋아요 수 증가
 
     public void likePostByOptimisticLock(Long postId){
         var post = postRepository.findById(postId, false).orElseThrow();
