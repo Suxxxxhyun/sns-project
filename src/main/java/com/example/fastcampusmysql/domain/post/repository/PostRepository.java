@@ -135,7 +135,7 @@ public class PostRepository {
     public Optional<Post> findById(Long postId, Boolean requiredLock){
         var sql = String.format("SELECT * FROM %s WHERE id = :postId ", TABLE);
         if (requiredLock){
-            sql = "FOR UPDATE";
+            sql += "FOR UPDATE";
         }
         var params = new MapSqlParameterSource().addValue("postId", postId);
         var nullablePost = namedParameterJdbcTemplate.queryForObject(sql, params, ROW_MAPPER);
