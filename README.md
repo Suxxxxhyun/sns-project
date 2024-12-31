@@ -1,4 +1,4 @@
-- Spring Data JPA가 아닌, **NamedParameterJdbcTemplate를 이용하여 JAP가 제공하는 기능을 파악하는데 목표를 두었다.**
+- Spring Data JPA가 아닌, **NamedParameterJdbcTemplate를 이용하여 JPA가 제공하는 기능을 파악하는데 목표를 두었다.**
 - 변경이력과 팔로우 등 **상황별로 쓰기 성능에 초점을 둔 정규화, 읽기 성능에 초점을 둔 비정규화 어느 것이 바람직한가**에 대한 의미를 두었다.
 
 ## 주요 기능
